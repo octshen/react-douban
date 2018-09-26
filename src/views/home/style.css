@@ -1,0 +1,20 @@
+.user-info {
+  width: 120px;
+  min-height: 85px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-top: 20px;
+  background-image: linear-gradient(to left, deepskyblue, red 25%, deepskyblue 50%, red 75%, deepskyblue 100%);
+  background-size: 200%, 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: word 3s linear infinite alternate;
+}
+@keyframes word {
+  0%{background-position: 0 0}
+  100%{background-position: -100% 0}
+}
+.user-info>div {
+  margin: 5px 0 10px 10px;
+}
+
