@@ -1,7 +1,8 @@
 import * as actionTypes from '../constants';
 const initState = {
   email: '',
-  token: ''
+  token: '',
+  name: ''
 }
 
 export default function userInfo (state = initState, action) {

@@ -1,6 +1,5 @@
 import React from 'react'
 import './style.css'
-import { Route } from 'react-router-dom'
 import { RouteWithSubRoutes } from '@router/index'
 import { connect } from 'react-redux'
 import Header from '@components/header'

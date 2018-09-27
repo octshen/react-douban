@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import './style.less'
+import { withRouter } from 'react-router-dom'
 import avatar from '../../assets/img/avatar.png'
 import userNormal from '../../assets/img/user_normal.jpg'
+import './style.less'
 
 class UserBar extends Component {
   state = {
@@ -10,20 +11,20 @@ class UserBar extends Component {
     holder: '请先登录'
   }
   componentWillMount() {
-    let { currentUser } = this.props
-    currentUser && this.setState({
+    let { userInfo } = this.props
+    userInfo && this.setState({
       currentLink: '/home',
-      holder: currentUser.name
+      holder: userInfo.name
     })
   }
   render() {
-    let { history, currentUser } = this.props
+    let { history, userInfo } = this.props
     let { currentLink, holder } = this.state
     return (
       <div styleName='user-bar' onClick={() => history.push(currentLink)}> 
         <div styleName='avatar'>
           {
-            currentUser
+            userInfo
               ? <img src={avatar} alt='avatar' />
               : <img src={userNormal} alt='未登陆' />
           }
@@ -36,6 +37,6 @@ class UserBar extends Component {
   }
 }
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  userInfo: state.userInfo
 })
-export default connect(mapStateToProps)(UserBar)
+export default withRouter(connect(mapStateToProps)(UserBar))

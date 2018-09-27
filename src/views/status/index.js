@@ -11,7 +11,7 @@ class Status extends React.Component {
   render() {
     let { items } = this.state
     return (
-      <div>
+      <div styleName='has-header'>
         <Banner />
         <UserBar />
         {items && items.map((item, index) => (

@@ -10,7 +10,7 @@ const validateLogin = (data) => (dispatch, getState) => {
     let status = true
     status  
       ? setTimeout(() => {
-        dispatch(update(data))
+        dispatch(update({...data, name: 'shen'}))
         resolve('update')
       }, 500)
       : reject('login fail')

@@ -31,9 +31,8 @@ class Login extends React.Component {
     })
   }
   onSuccess() {
-    console.log('success')
     let { history } = this.props
-    history.push('/status')
+    history.push('/pages/status')
   }
   onError(err) {
     this.setState({
