@@ -2,7 +2,6 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { routes } from './router'
 
-
 export const RouteWithSubRoutes = route => {
   return (
     <Route

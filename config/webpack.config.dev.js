@@ -142,7 +142,6 @@ module.exports = {
               name: 'static/media/[name].[hash:8].[ext]',
             },
           },
-          
           // Process JS with Babel.
           {
             test: /\.(js|jsx|mjs)$/,
@@ -176,7 +175,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.(css|less)$/,
-            exclude:[/src/],
+            exclude: [/src/],
             use: [
               require.resolve('style-loader'),
               {
@@ -213,7 +212,7 @@ module.exports = {
           },
           {
             test: /\.(css|less)$/,
-            exclude:[/node_modules/],
+            exclude: [/node_modules/],
             use: [
               require.resolve('style-loader'),
               {

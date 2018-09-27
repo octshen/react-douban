@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import './style.css'
+import './style.less'
 
 class Header extends React.Component {
   render() {

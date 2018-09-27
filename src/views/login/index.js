@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateUserInfo } from '@store/actions/userInfo'
-import { Modal } from 'antd-mobile'
-// import './style.css'
+import { validateLogin } from '@store/actions/userInfo'
+// import { Modal } from 'antd-mobile'
 import './style.less'
 
 class Login extends React.Component {
@@ -15,27 +14,30 @@ class Login extends React.Component {
     email: '',
     token: ''
   }
-  login = () => {
-    this.isDisabled = true
-    this.loginState = '正在登录...'
+  handleLogin = () => {
+    this.setState({
+      isDisabled: true,
+      loginState: '正在登录...'
+    })
     let { email, token } = this.state
     let userInfo = {
       email,
       token
     }
-    let action = this.props.updateInfo(userInfo)
-    setTimeout(()=> {
-      console.log(this.props)
+    this.props.handleUserInfo(userInfo).then(() => {
+      this.onSuccess()
+    }, (err) => {
+      this.onError(err)
     })
-    // this.props.history.push('/StatusView')
   }
   onSuccess() {
+    console.log('success')
     let { history } = this.props
-    history.push('/StatusView')
+    history.push('/status')
   }
   onError(err) {
     this.setState({
-      error: err.body.error,
+      error: err,
       loginState: '登录',
       isDisabled: false
     })
@@ -48,21 +50,13 @@ class Login extends React.Component {
       }
     })
   }
-  renderHeader() {
-    let { history } = this.props
-    return (
-      <h1>
-        <span onClick={() => history.go(-1)}>取消</span>登录豆瓣
-      </h1>
-    )
-  }
   renderContent() {
     let { email, token, error, passType, isDisabled, loginState, isShow } = this.state
     return (
       <form 
         onSubmit={e => {
           e.preventDefault()
-          this.login()
+          this.handleLogin()
         }}
       >
         {error && <p styleName='tip error'>{error}</p>}
@@ -82,18 +76,17 @@ class Login extends React.Component {
             <strong>请输入密码</strong>
             {passType === 'password' 
               ? <input
-                value={token}
-                type='password'
-                name='token'
-                onChange={(e) => this.setState({token: e.target.value})}
-                placeholder='Token' />
-              : 
-              <input
-                value={token}
-                type='text'
-                name='token'
-                onChange={(e) => this.setState({token: e.target.value})}
-                placeholder='Token' />
+                  value={token}
+                  type='password'
+                  name='token'
+                  onChange={(e) => this.setState({token: e.target.value})}
+                  placeholder='Token' />
+              : <input
+                  value={token}
+                  type='text'
+                  name='token'
+                  onChange={(e) => this.setState({token: e.target.value})}
+                  placeholder='Token' />
             }
             <span styleName={`show-pwd ${isShow ? 'show' : ''}`} onClick={this.showPwd}></span>
           </label>
@@ -109,28 +102,30 @@ class Login extends React.Component {
       </form>
     )
   }
-  renderFooter() {
+  componentWillMount() {
+    let { email, history } = this.props
+    email && history.push('/status')
+  }
+  render() {
     let { history } = this.props
     return (
-      <div styleName='footer'>
-        <div styleName='more-login'>使用其他方式登录 &amp; 找回密码</div>
-        <div styleName='btns'>
-          <span onClick={() => history.push('/RegisterView')}>注册豆瓣帐号</span>
-          <span>下载豆瓣App</span>
+      <div styleName='login-view'>
+        <h1>
+          <span onClick={() => history.go(-1)}>取消</span>登录豆瓣
+        </h1>
+        <div>
+          {this.renderContent()}
+        </div>
+        <div styleName='footer'>
+          <div styleName='more-login'>使用其他方式登录 &amp; 找回密码</div>
+          <div styleName='btns'>
+            {/* <span onClick={() => history.push('/RegisterView')}>注册豆瓣帐号</span> */}
+            <span>注册豆瓣帐号</span>
+            <span>下载豆瓣App</span>
+          </div>
         </div>
       </div>
     )
-  }
-  componentWillMount() {
-    let { email, history } = this.props
-    email && history.push('/StatusView')
-  }
-  render() {
-    return <div styleName='login-view'>
-       {this.renderHeader()}
-       {this.renderContent()}
-       {this.renderFooter()}
-    </div>
   }
 }
 const mapStateToProps = state => {
@@ -138,12 +133,15 @@ const mapStateToProps = state => {
     email: state.userInfo.email
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    updateInfo: userInfo => {
-      dispatch(updateUserInfo(userInfo))
-    }
-  }
-}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     updateInfo: userInfo => {
+//       dispatch(updateUserInfo(userInfo))
+//     }
+//   }
+// }
+const mapDispatchToProps = ({
+  handleUserInfo: validateLogin
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
