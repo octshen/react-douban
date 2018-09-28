@@ -16,12 +16,10 @@ export const RouteWithSubRoutes = route => {
   
 const Router = () => (
   <HashRouter>
-    <div>
-      <Switch>
-        {routes.map((route) => <RouteWithSubRoutes key={route.name} {...route} />)}
-        <Redirect exact from='/' to='/login' />
-      </Switch>
-    </div>
+    <Switch>
+      {routes.map((route) => <RouteWithSubRoutes key={route.name} {...route} />)}
+      <Redirect exact from='/' to='/pages/home' />
+    </Switch>
   </HashRouter>
 )
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { validateLogin } from '@store/actions/userInfo'
+import { validateLogin } from '@/store/actions/userInfo'
 // import { Modal } from 'antd-mobile'
 import './style.less'
 

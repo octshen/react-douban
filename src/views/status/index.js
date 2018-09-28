@@ -1,9 +1,10 @@
 import React from 'react'
 import './style.less'
-import Card from '@components/card'
-import Banner from '@components/banner'
-import UserBar from '@components/userBar'
-import DownLoadApp from '@components/downloadApp'
+import Card from '@/components/card'
+import Banner from '@/components/banner'
+import UserBar from '@/components/userBar'
+import DownLoadApp from '@/components/downloadApp'
+
 class Status extends React.Component {
   state = {
     items: new Array(10).fill('cardItem')

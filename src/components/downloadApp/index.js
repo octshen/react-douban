@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './style.less'
 /*eslint-disable*/
 // 关闭eslit 否则包凑
-export default function downloadApp () {
+export default function DownloadApp () {
   return (
     <div styleName="download-app">
       <div styleName="info">

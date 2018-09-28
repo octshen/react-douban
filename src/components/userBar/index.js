@@ -13,7 +13,7 @@ class UserBar extends Component {
   componentWillMount() {
     let { userInfo } = this.props
     userInfo && this.setState({
-      currentLink: '/home',
+      currentLink: '/pages/home',
       holder: userInfo.name
     })
   }

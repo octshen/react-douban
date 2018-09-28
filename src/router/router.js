@@ -15,22 +15,16 @@ export const routes = [
     component: Pages,
     routes: [
       {
+        name: 'home',
+        path: "/pages/home",
+        component: Home
+      },
+      {
         name: 'status',
         path: "/pages/status",
         component: Status
       }
     ]
   },
-  // {
-  //   name: 'home',
-  //   path: "/home",
-  //   component: Home,
-  //   routes: [
-  //     {
-  //       name: 'detail',
-  //       path: "/home/detail",
-  //       component: Detail
-  //     }
-  //   ]
-  // }
+  
 ]

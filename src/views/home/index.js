@@ -1,31 +1,68 @@
 import React from 'react'
-import './style.css'
-import { RouteWithSubRoutes } from '@router/index'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import Header from '@components/header'
+import SubNav from '@/components/subNav'
+import List from '@/components/list'
+import Spinner from '@/components/Spinner'
+import { loadmore } from '@/store/actions/activities' 
+import { PullToRefresh } from 'antd-mobile'
 
-
-const Home = ({ routes, username, password, history }) => {
-  return (
-    <div>
-      <Header />
-      {
-        history.location.pathname === '/home'
-        ? (<div styleName='user-info' >
-            <div>用户信息</div>
-            <div>昵称: {username}</div>
-            <div>密码: {password}</div>
-            <div onClick={() => history.push('home/detail')}>显示更多</div>
-          </div>)
-          : ''
-      }
-      {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-    </div>
-  )
+class Home extends React.Component {
+  state = {
+    refreshing: false,
+    down: false,
+    height: document.documentElement.clientHeight,
+    data: [],
+  }
+  constructor(props) {
+    super(props)
+    this.ptr = React.createRef()
+  }
+  componentDidMount() {
+    const hei = this.state.height - ReactDOM.findDOMNode(this.ptr.current).offsetTop
+    let { events, loadmore } = this.props
+    loadmore().then((data) => {
+      this.setState({
+        height: hei,
+        data
+      })
+    })
+  }
+  render() {
+    let { events, loadmore } = this.props
+    return (
+      <div data-role='home-view'>
+        <PullToRefresh
+          damping={100}
+          ref={this.ptr}
+          style={{
+            height: this.state.height,
+            overflow: 'auto',
+          }}
+          distanceToRefresh={60}
+          indicator={this.state.down ? {} : {release: <Spinner />, deactivate: '上拉刷新' }}
+          direction={this.state.down ? 'down' : 'up'}
+          refreshing={this.state.refreshing}
+          onRefresh={() => {
+            this.setState({ refreshing: true })
+            loadmore().then(() => {
+              this.setState({ refreshing: false })
+            })
+          }}
+        >  
+          <SubNav mold='quickNav'/>
+          <List mold='thumbnail' items={events}/>
+        </PullToRefresh> 
+      </div>
+    )
+  }
 }
   
 const mapStateToProps = state => ({
-  username: state.userInfo.name,
-  password: state.userInfo.password
+  events: state.activities.events
 })
-export default connect(mapStateToProps)(Home)
+const mapDispatchToProps = ({
+  loadmore: loadmore
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
