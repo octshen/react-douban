@@ -13,7 +13,7 @@ class List extends Component {
       <div styleName='list'>
         {
           mold === 'thumbnail' && items && items.map((item, index) => (
-            <div styleName='thumbnail' key={index} onClick={() => history.push(`/pages/detail/id:${item.id}`)}>
+            <div styleName='thumbnail' key={index} onClick={() => history.push(`/pages/detail/${item.id}`)}>
               <div styleName='content'>
                 <img src={item.image_hlarge} alt='cover' />
                 <h3>{item.title}</h3>

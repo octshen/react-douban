@@ -1,14 +1,11 @@
 import * as actionTypes from '../constants';
-const email = localStorage.getItem('email') || ''
-const token = localStorage.getItem('token') || ''
-const name = localStorage.getItem('name') || ''
+const lsUserInfo = localStorage.getItem('userInfo')
 
-const initState = {
-  email,
-  token,
-  name
+const initState = lsUserInfo || {
+  email: '',
+  token: '',
+  name: ''
 }
-
 export default function userInfo (state = initState, action) {
   switch (action.type) {
     case actionTypes.USERINFO_UPDATE:

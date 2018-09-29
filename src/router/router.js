@@ -2,6 +2,8 @@ import Login from '../views/login'
 import Home from '../views/home'
 import Pages from '../views/pages'
 import Status from '../views/status'
+import Detail from '../views/detail'
+import Movie from '../views/movie'
 
 export const routes = [
   {
@@ -23,6 +25,16 @@ export const routes = [
         name: 'status',
         path: "/pages/status",
         component: Status
+      },
+      {
+        name: 'status',
+        path: "/pages/movie",
+        component: Movie
+      },
+      {
+        name: 'detail',
+        path: "/pages/detail/:id",
+        component: Detail
       }
     ]
   },

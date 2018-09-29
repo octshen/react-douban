@@ -7,9 +7,7 @@ const update = (data) => {
 }
 
 const logout = () => (dispatch) => {
-  localStorage.removeItem('email')
-  localStorage.removeItem('token')
-  localStorage.removeItem('name')
+  localStorage.removeItem('userInfo')
   let userInfo = {
     email: '',
     token: '',
@@ -19,9 +17,12 @@ const logout = () => (dispatch) => {
 }
 
 const validateLogin = (data) => (dispatch, getState) => {
-  localStorage.setItem('email', data.email)
-  localStorage.setItem('token', data.token)
-  localStorage.setItem('name', 'shen')
+  let userInfo = {
+    email: data.email,
+    token: data.token,
+    name: 'shen'
+  }
+  localStorage.setItem('userInfo', userInfo)
   return new Promise((resolve, reject) => {
     let status = true
     status  

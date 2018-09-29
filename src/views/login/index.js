@@ -139,8 +139,8 @@ const mapStateToProps = state => {
 //     }
 //   }
 // }
-const mapDispatchToProps = ({
+const mapDispatchToProps = {
   handleUserInfo: validateLogin
-})
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

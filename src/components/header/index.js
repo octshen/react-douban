@@ -7,10 +7,8 @@ class Header extends React.Component {
     let { history } = this.props
     return (
       <div styleName='header-bar'>
-        <h1 styleName='title'>
-          <span onClick={() => history.push('/home')}>
-            豆瓣
-          </span>
+        <h1 styleName='title' onClick={() => history.push('/pages/home')}>
+          豆瓣
         </h1>
         <ul>
           <li>

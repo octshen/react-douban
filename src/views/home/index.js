@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import SubNav from '@/components/subNav'
 import List from '@/components/list'
 import Spinner from '@/components/Spinner'
-import { loadmore } from '@/store/actions/activities' 
+import { loadMore } from '@/store/actions/activities' 
 import { PullToRefresh } from 'antd-mobile'
 
 class Home extends React.Component {
@@ -20,8 +20,8 @@ class Home extends React.Component {
   }
   componentDidMount() {
     const hei = this.state.height - ReactDOM.findDOMNode(this.ptr.current).offsetTop
-    let { events, loadmore } = this.props
-    loadmore().then((data) => {
+    let { events, loadMore } = this.props
+    loadMore().then((data) => {
       this.setState({
         height: hei,
         data
@@ -29,7 +29,7 @@ class Home extends React.Component {
     })
   }
   render() {
-    let { events, loadmore } = this.props
+    let { events, loadMore } = this.props
     return (
       <div data-role='home-view'>
         <PullToRefresh
@@ -45,14 +45,16 @@ class Home extends React.Component {
           refreshing={this.state.refreshing}
           onRefresh={() => {
             this.setState({ refreshing: true })
-            loadmore().then(() => {
+            loadMore().then(() => {
               this.setState({ refreshing: false })
             })
           }}
         >  
           <SubNav mold='quickNav'/>
-          <List mold='thumbnail' items={events}/>
-        </PullToRefresh> 
+          {
+            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner />
+          }
+        </PullToRefresh>
       </div>
     )
   }
@@ -61,8 +63,8 @@ class Home extends React.Component {
 const mapStateToProps = state => ({
   events: state.activities.events
 })
-const mapDispatchToProps = ({
-  loadmore: loadmore
-})
+const mapDispatchToProps = {
+  loadMore
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -12,7 +12,7 @@ class Status extends React.Component {
   render() {
     let { items } = this.state
     return (
-      <div styleName='has-header'>
+      <div className='has-header'>
         <Banner />
         <UserBar />
         {items && items.map((item, index) => (

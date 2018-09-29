@@ -68,8 +68,8 @@ class SubNav extends Component {
 const mapStateToProps = state => ({
   userInfo: state.userInfo
 })
-const mapDispatchToProps = ({
+const mapDispatchToProps = {
   logout
-})
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SubNav))

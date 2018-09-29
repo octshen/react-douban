@@ -1,2 +1,7 @@
 export const USERINFO_UPDATE = 'USERINFO_UPDATE'
 export const LOADMORE = 'LOADMORE'
+export const GETSINGLEEVENT = 'GETSINGLEEVENT'
+
+export const UPDATEHOT = 'UPDATEHOT'
+export const UPDATENEW = 'UPDATENEW'
+export const UPDATETOP = 'UPDATETOP'
