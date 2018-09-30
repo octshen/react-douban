@@ -1,4 +1,5 @@
 import Login from '../views/login'
+import Register from '../views/register'
 import Home from '../views/home'
 import Pages from '../views/pages'
 import Status from '../views/status'
@@ -6,11 +7,6 @@ import Detail from '../views/detail'
 import Movie from '../views/movie'
 
 export const routes = [
-  {
-    name: 'login',
-    path: "/login",
-    component: Login
-  },
   {
     name: 'pages',
     path: "/pages",
@@ -37,6 +33,16 @@ export const routes = [
         component: Detail
       }
     ]
+  },
+  {
+    name: 'login',
+    path: "/login",
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
   },
   
 ]

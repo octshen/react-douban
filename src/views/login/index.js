@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { validateLogin } from '@/store/actions/userInfo'
+import { userLogin } from '@/store/actions/userInfo'
 // import { Modal } from 'antd-mobile'
 import './style.less'
 
@@ -58,7 +58,6 @@ class Login extends React.Component {
           this.handleLogin()
         }}
       >
-        {error && <p styleName='tip error'>{error}</p>}
         <div>
           <label>
             <strong>邮箱</strong>
@@ -90,21 +89,20 @@ class Login extends React.Component {
             <span styleName={`show-pwd ${isShow ? 'show' : ''}`} onClick={this.showPwd}></span>
           </label>
         </div>
-        <div>
-          <button
-            type='submit'
-            styleName={`submit ${isDisabled ? 'disabled' : ''}`}
-            disabled={isDisabled}>
-            {loginState}
-          </button>
-        </div>
+        {error && <p styleName='tip error'>{error}</p>}
+        <button
+          type='submit'
+          styleName={`submit ${isDisabled ? 'disabled' : ''}`}
+          disabled={isDisabled}>
+          {loginState}
+        </button>
       </form>
     )
   }
-  componentWillMount() {
-    let { email, history } = this.props
-    email && history.push('/status')
-  }
+  // componentWillMount() {
+  //   let { email, history } = this.props
+  //   email && history.push('/status')
+  // }
   render() {
     let { history } = this.props
     return (
@@ -118,8 +116,7 @@ class Login extends React.Component {
         <div styleName='footer'>
           <div styleName='more-login'>使用其他方式登录 &amp; 找回密码</div>
           <div styleName='btns'>
-            {/* <span onClick={() => history.push('/RegisterView')}>注册豆瓣帐号</span> */}
-            <span>注册豆瓣帐号</span>
+            <span onClick={() => history.push('/register')}>注册豆瓣帐号</span>
             <span>下载豆瓣App</span>
           </div>
         </div>
@@ -129,7 +126,7 @@ class Login extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    email: state.userInfo.email
+    email: state.userInfo.currentUser.email
   }
 }
 // const mapDispatchToProps = dispatch => {
@@ -140,7 +137,7 @@ const mapStateToProps = state => {
 //   }
 // }
 const mapDispatchToProps = {
-  handleUserInfo: validateLogin
+  handleUserInfo: userLogin
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,19 +1,38 @@
 import * as actionTypes from '../constants';
-const lsUserInfo = localStorage.getItem('userInfo')
+import { combineReducers } from 'redux'
+const lsCurrentUser = localStorage.getItem('userInfo')
 
-const initState = lsUserInfo || {
+const initUserState = lsCurrentUser || {
   email: '',
   token: '',
   name: ''
 }
-export default function userInfo (state = initState, action) {
+
+const users = (state = [], action) => {
+  switch (action.type) {
+    case actionTypes.ADDUSER:
+      return [...state, action.data]
+    default:
+      return state
+  }
+}
+
+const currentUser = (state = initUserState, action) => {
   switch (action.type) {
     case actionTypes.USERINFO_UPDATE:
       return {
         ...state,
-        ...action.data,
+        ...action.data
       }
     default:
       return state
   }
 }
+
+const userInfo = combineReducers({
+  users,
+  currentUser
+})
+
+export default userInfo
+

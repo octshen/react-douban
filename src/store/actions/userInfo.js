@@ -6,6 +6,13 @@ const update = (data) => {
   }
 }
 
+const addUser = (data) => {
+  return {
+      type: actionTypes.ADDUSER,
+      data
+  }
+}
+
 const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
   let userInfo = {
@@ -16,21 +23,34 @@ const logout = () => (dispatch) => {
   dispatch(update(userInfo))
 }
 
-const validateLogin = (data) => (dispatch, getState) => {
-  let userInfo = {
-    email: data.email,
-    token: data.token,
-    name: 'shen'
-  }
-  localStorage.setItem('userInfo', userInfo)
+const register = (data) => (dispatch, getState) => {
+  let users = getState().userInfo.users
+  let isRegister = users.find(item => item.email === data.email)
+  let status = isRegister ? false : true
+
   return new Promise((resolve, reject) => {
-    let status = true
-    status  
+    status
       ? setTimeout(() => {
-        dispatch(update({...data, name: 'shen'}))
-        resolve('update')
-      }, 1000)
-      : reject('login fail')
+         dispatch(addUser(data))
+         resolve('register')
+      }, 500)
+      : reject('already register')
   })
 }
-export { update, validateLogin, logout }
+
+const userLogin = (data) => (dispatch, getState) => {
+  let status = true
+  let { users } = getState().userInfo
+  let hasRegister = users.find(item => item.email === data.email)
+  if (!hasRegister) status = false
+  return new Promise((resolve, reject) => {
+    status  
+      ? setTimeout(() => {
+        let currentUserInfo = users.find(item => item.email === data.email && item.token === data.token)
+        !currentUserInfo && reject('login fail')
+        currentUserInfo && dispatch(update(currentUserInfo)) && resolve('login')
+      }, 800)
+      : reject('no register')
+  })
+}
+export { userLogin, logout, register }

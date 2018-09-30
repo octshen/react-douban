@@ -1,4 +1,5 @@
 export const USERINFO_UPDATE = 'USERINFO_UPDATE'
+export const ADDUSER = 'ADDUSER'
 export const LOADMORE = 'LOADMORE'
 export const GETSINGLEEVENT = 'GETSINGLEEVENT'
 

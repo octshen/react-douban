@@ -11,20 +11,20 @@ class UserBar extends Component {
     holder: '请先登录'
   }
   componentWillMount() {
-    let { userInfo } = this.props
-    userInfo && this.setState({
+    let { currentUser } = this.props
+    currentUser && this.setState({
       currentLink: '/pages/home',
-      holder: userInfo.name
+      holder: currentUser.name
     })
   }
   render() {
-    let { history, userInfo } = this.props
+    let { history, currentUser } = this.props
     let { currentLink, holder } = this.state
     return (
       <div styleName='user-bar' onClick={() => history.push(currentLink)}> 
         <div styleName='avatar'>
           {
-            userInfo
+            currentUser
               ? <img src={avatar} alt='avatar' />
               : <img src={userNormal} alt='未登陆' />
           }
@@ -37,6 +37,6 @@ class UserBar extends Component {
   }
 }
 const mapStateToProps = state => ({
-  userInfo: state.userInfo
+  currentUser: state.userInfo.currentUser
 })
 export default withRouter(connect(mapStateToProps)(UserBar))

@@ -16,19 +16,16 @@ class SubNav extends Component {
       holder: userInfo.name
     })
   }
-  register = () => {
-    alert('todo...')
-  }
   render() {
-    let { history, logout, location, mold, userInfo } = this.props
+    let { history, logout, location, mold, currentUser } = this.props
     return (
       <div className='has-header' styleName='sub-nav'>
         {
           mold === 'navBottom' && <div styleName='nav-bottom'>
             <div styleName='nav-item'>
-              <a onClick={this.register}>注册帐号</a>
+              <a onClick={() => history.push('/register')}>注册帐号</a>
               {
-                userInfo.email 
+                currentUser.email 
                   ? <a onClick={logout}>退出登录</a>
                   : <a onClick={() => {history.replace('/login')}}>登录豆瓣</a>
               }
@@ -49,11 +46,11 @@ class SubNav extends Component {
                   <Link to={'/pages/status'}>欧美新碟榜</Link>
                 </li>
                 <li>
-                  <a onClick={this.register}>注册帐号</a>
+                  <a onClick={() => history.push('/register')}>注册帐号</a>
                 </li>
                 <li>
                 {
-                  userInfo.email 
+                  currentUser.email 
                     ? <a onClick={logout}>退出登录</a>
                     : <a onClick={() => {history.replace('/login')}}>登录豆瓣</a>
                 }
@@ -66,7 +63,7 @@ class SubNav extends Component {
   }
 }
 const mapStateToProps = state => ({
-  userInfo: state.userInfo
+  currentUser: state.userInfo.currentUser
 })
 const mapDispatchToProps = {
   logout
