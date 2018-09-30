@@ -152,8 +152,20 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
               compact: true,
+              plugins: [
+                [
+                  'react-css-modules',
+                  {
+                    generateScopedName: '[local]-[hash:base64:10]',
+                    filetypes: {
+                      '.less': {
+                        syntax: 'postcss-less'
+                      }
+                    }
+                  }
+                ]
+              ]
             },
           },
           // The notation here is somewhat confusing.
@@ -218,7 +230,6 @@ module.exports = {
                 extractTextPluginOptions
               )
             ),
-            // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
           },
           {
             test: /\.(css|less)$/,
@@ -240,6 +251,7 @@ module.exports = {
                         minimize: true,
                         sourceMap: shouldUseSourceMap,
                         modules: true,
+                        localIdentName: '[local]-[hash:base64:10]'
                       },
                     },
                     {

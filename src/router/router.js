@@ -8,13 +8,12 @@ import Detail from '../views/detail'
 import Movie from '../views/movie'
 import Spinner from '@/components/Spinner'
 
-
+// 暂时不生效
 export const routes = [
   {
     name: 'pages',
     path: "/pages",
-    component: Loadable({loader: () => import('../views/pages'), loading: Spinner}),
-    // component: Pages,
+    component: Pages,
     routes: [
       {
         name: 'home',
@@ -37,19 +36,22 @@ export const routes = [
       {
         name: 'detail',
         path: "/pages/detail/:id",
-        component: Detail
+        component: Loadable({loader: () => import('../views/detail'), loading: Spinner})
+        // component: Detail
       }
     ]
   },
   {
     name: 'login',
     path: "/login",
-    component: Login
+    component: Loadable({loader: () => import('../views/login'), loading: Spinner})
+    // component: Login
   },
   {
     path: '/register',
     name: 'register',
-    component: Register
+    component: Loadable({loader: () => import('../views/register'), loading: Spinner})
+    // component: Register
   },
   
 ]
