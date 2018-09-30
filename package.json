@@ -11,6 +11,7 @@
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
     "babel-plugin-react-css-modules": "^3.4.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-react-app": "^3.1.2",
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -40,6 +41,7 @@
     "react": "^16.5.1",
     "react-dev-utils": "^5.0.2",
     "react-dom": "^16.5.1",
+    "react-loadable": "^5.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
@@ -108,7 +110,8 @@
           "libraryName": "antd-mobile",
           "style": true
         }
-      ]
+      ],
+      "syntax-dynamic-import"
     ]
   },
   "eslintConfig": {
@@ -124,12 +127,13 @@
       ]
     }
   },
+  "homepage": "./",
   "proxy": {
-    "/api":{
+    "/api": {
       "target": "https://api.douban.com/v2",
       "changeOrigin": true,
       "pathRewrite": {
-          "^/api": ""
+        "^/api": ""
       }
     }
   }
