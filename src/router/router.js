@@ -6,7 +6,7 @@ import Pages from '../views/pages'
 import Status from '../views/status'
 import Detail from '../views/detail'
 import Movie from '../views/movie'
-import Spinner from '@/components/Spinner'
+import Loading from './Loading'
 
 // 暂时不生效
 export const routes = [
@@ -18,25 +18,25 @@ export const routes = [
       {
         name: 'home',
         path: "/pages/home",
-        component: Loadable({loader: () => import('../views/home'), loading: Spinner})
+        component: Loadable({loader: () => import('../views/home'), loading: Loading})
         // component: Home
       },
       {
         name: 'status',
         path: "/pages/status",
-        component: Loadable({loader: () => import('../views/status'), loading: Spinner})
+        component: Loadable({loader: () => import('../views/status'), loading: Loading})
         // component: Status
       },
       {
         name: 'status',
         path: "/pages/movie",
-        component: Loadable({loader: () => import('../views/movie'), loading: Spinner})
+        component: Loadable({loader: () => import('../views/movie'), loading: Loading})
         // component: Movie
       },
       {
         name: 'detail',
         path: "/pages/detail/:id",
-        component: Loadable({loader: () => import('../views/detail'), loading: Spinner})
+        component: Loadable({loader: () => import('../views/detail'), loading: Loading})
         // component: Detail
       }
     ]
@@ -44,13 +44,13 @@ export const routes = [
   {
     name: 'login',
     path: "/login",
-    component: Loadable({loader: () => import('../views/login'), loading: Spinner})
+    component: Loadable({loader: () => import('../views/login'), loading: Loading, delay: 1000})
     // component: Login
   },
   {
     path: '/register',
     name: 'register',
-    component: Loadable({loader: () => import('../views/register'), loading: Spinner})
+    component: Loadable({loader: () => import('../views/register'), loading: Loading})
     // component: Register
   },
   
