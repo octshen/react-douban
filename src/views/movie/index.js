@@ -23,12 +23,16 @@ class Moive extends Component {
     let { hotMovies, topMovies, newMovies, movieTags } = this.props.movie
     return (
       <div className='has-header'>
-        {showLoading || <Scroller title='影院热映' type='hasCover' items={hotMovies}/>}
-        {showLoading || <Scroller title='免费在线观影' type='hasCover' items={topMovies}/>}
-        {showLoading || <Scroller title='新片速递' type='hasCover' items={newMovies}/>}
-        {showLoading || <Scroller title='发现好电影' type='onlyString' items={movieTags}/>}
-        {showLoading || <Types />}
-        {showLoading || <DownloadApp />}
+        {
+          showLoading || <React.Fragment>
+            <Scroller title='影院热映' type='hasCover' items={hotMovies}/>
+            <Scroller title='免费在线观影' type='hasCover' items={topMovies}/>
+            <Scroller title='新片速递' type='hasCover' items={newMovies}/>
+            <Scroller title='发现好电影' type='onlyString' items={movieTags}/>
+            <Types />
+            <DownloadApp />
+          </React.Fragment>
+        }
         {showLoading && <Spinner />}
       </div>
     )
