@@ -1,5 +1,11 @@
 import * as actionTypes from '../constants'
 import axios from '@/utils/axios'
+const updateSkip = (data) => {
+  return {
+      type: actionTypes.UPDATESKIP,
+      data
+  }
+}
 const updateEvents = (data) => {
   return {
       type: actionTypes.LOADMORE,
@@ -31,8 +37,8 @@ const loadMore = () => (dispatch, getState) => {
     .then(res => {
       let { events } = res.data
       skip += 5
-      dispatch(updateEvents({events, skip}))
-      return events
+      dispatch(updateSkip(skip))
+      dispatch(updateEvents(events))
     })
     .catch(err => {
       console.error('loadMore', err)
