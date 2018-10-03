@@ -6,41 +6,22 @@ const initState = {
   eventItem: {}
 }
 
-const events = (state = initState.events, action) => {
-  switch (action.type) {
-    case actionTypes.LOADMORE:
-      return [
-        ...state,
-        ...action.data.events
-      ]
-    default:
-      return state
-  }
-}
-const eventItem = (state = initState.eventItem, action) => {
-  switch (action.type) {
-    case actionTypes.GETSINGLEEVENT:
-      return {
-        ...state, ...action.data
-      }
-    default:
-      return state
-  }
-}
-
 export default function activities (state = initState, action) {
   switch (action.type) {
+    case actionTypes.UPDATESKIP:
+      return {
+        ...state,
+        skip: action.data
+      }
     case actionTypes.LOADMORE:
       return {
-        skip: action.data.skip,
-        events: events(state.events, action),
-        eventItem: eventItem(state.eventItem, action)
+        ...state,
+        events: [...state.events, ...action.data]
       }
     case actionTypes.GETSINGLEEVENT:
       return {
-        skip: action.data.skip,
-        events: events(state.events, action),
-        eventItem: eventItem(state.eventItem, action)
+        ...state,
+        eventItem: {...state.eventItem, ...action.data}
       }
     default:
       return state
