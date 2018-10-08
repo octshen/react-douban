@@ -21,7 +21,7 @@ class Home extends React.Component {
   componentDidMount() {
     const hei = this.state.height - ReactDOM.findDOMNode(this.ptr.current).offsetTop
     let { events, loadMore } = this.props
-    loadMore().then((data) => {
+    events.length === 0 && loadMore().then((data) => {
       this.setState({
         height: hei,
         data
@@ -52,7 +52,7 @@ class Home extends React.Component {
         >  
           <SubNav mold='quickNav'/>
           {
-            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner />
+            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner style={{height: '60px'}}/>
           }
         </PullToRefresh>
       </div>

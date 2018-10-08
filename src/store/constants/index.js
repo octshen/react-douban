@@ -8,6 +8,14 @@ export const UPDATESKIP = 'UPDATESKIP'
 export const GETSINGLEEVENT = 'GETSINGLEEVENT'
 
 // movie
-export const UPDATEHOT = 'UPDATEHOT'
-export const UPDATENEW = 'UPDATENEW'
-export const UPDATETOP = 'UPDATETOP'
+export const M_UPDATEHOT = 'M_UPDATEHOT'
+export const M_UPDATENEW = 'M_UPDATENEW'
+export const M_UPDATETOP = 'M_UPDATETOP'
+
+// book
+export const B_UPDATENOVEL = 'B_UPDATENOVEL'
+export const B_UPDATEREALITY = 'B_UPDATEREALITY'
+export const B_UPDATETRAVEL = 'B_UPDATETRAVEL'
+
+//group
+export const UPDATEGROUP = 'UPDATEGROUP'

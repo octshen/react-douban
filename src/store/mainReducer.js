@@ -13,10 +13,10 @@ export function loadingChange (status = false) {
 // ------------------------------------
 // Action Creator
 // ------------------------------------
-const show = () => {
+export const show = () => {
   window.REDUX_STORE.dispatch(loadingChange(true))
 }
-const hide = () => {
+export const hide = () => {
   window.REDUX_STORE.dispatch(loadingChange(false))
 }
 // ------------------------------------

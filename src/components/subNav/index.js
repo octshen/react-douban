@@ -27,7 +27,7 @@ class SubNav extends Component {
               {
                 currentUser.email 
                   ? <a onClick={logout}>退出登录</a>
-                  : <a onClick={() => {history.replace('/login')}}>登录豆瓣</a>
+                  : <a onClick={() => {history.push('/login')}}>登录豆瓣</a>
               }
             </div>
             <div styleName='nav-item'>
@@ -52,7 +52,7 @@ class SubNav extends Component {
                 {
                   currentUser.email 
                     ? <a onClick={logout}>退出登录</a>
-                    : <a onClick={() => {history.replace('/login')}}>登录豆瓣</a>
+                    : <a onClick={() => {history.push('/login')}}>登录豆瓣</a>
                 }
                 </li>
               </ul>

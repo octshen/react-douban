@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants';
+import * as actionTypes from '../constants'
 import { combineReducers } from 'redux'
 
 const movieTagsData = [
@@ -49,7 +49,7 @@ const movieTagsData = [
 
 const hotMovies = (state = [], action) => {
   switch (action.type) {
-    case actionTypes.UPDATEHOT:
+    case actionTypes.M_UPDATEHOT:
       return [
         ...state,
         ...action.data
@@ -60,7 +60,7 @@ const hotMovies = (state = [], action) => {
 }
 const newMovies = (state = [], action) => {
   switch (action.type) {
-    case actionTypes.UPDATENEW:
+    case actionTypes.M_UPDATENEW:
       return [
         ...state,
         ...action.data
@@ -71,7 +71,7 @@ const newMovies = (state = [], action) => {
 }
 const topMovies = (state = [], action) => {
   switch (action.type) {
-    case actionTypes.UPDATETOP:
+    case actionTypes.M_UPDATETOP:
       return [
         ...state,
         ...action.data

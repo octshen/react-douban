@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants';
+import * as actionTypes from '../constants'
 import { combineReducers } from 'redux'
 const lsCurrentUser = localStorage.getItem('userInfo')
 

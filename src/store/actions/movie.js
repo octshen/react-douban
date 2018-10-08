@@ -5,16 +5,16 @@ const updateMovie = (data, mtype) => {
   let type = null
   switch (mtype) {
     case 'hot':
-      type = actionTypes.UPDATEHOT
+      type = actionTypes.M_UPDATEHOT
       break
     case 'new':
-      type = actionTypes.UPDATENEW
+      type = actionTypes.M_UPDATENEW
       break
     case 'top': 
-      type = actionTypes.UPDATETOP
+      type = actionTypes.M_UPDATETOP
       break
     default:
-      type = actionTypes.UPDATEHOT 
+      type = actionTypes.M_UPDATEHOT 
   }
   return {
     type,
