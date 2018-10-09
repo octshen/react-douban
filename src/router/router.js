@@ -9,6 +9,8 @@ import Detail from '../views/detail'
 import Movie from '../views/movie'
 import Book from '../views/book'
 import Group from '../views/group'
+import Subject from '../views/subject'
+import Demo from '../views/AntdDemo'
 
 // 暂时不生效
 export const routes = [
@@ -20,33 +22,45 @@ export const routes = [
       {
         name: 'home',
         path: "/pages/home",
+        exact: true,
         component: Home
       },
       {
         name: 'status',
         path: "/pages/status",
+        exact: true,
         component: Status
       },
       {
         name: 'movie',
         path: "/pages/movie",
+        exact: true,
         component: Movie
       },
       {
         name: 'book',
         path: "/pages/book",
+        exact: true,
         component: Book
       },
       {
         name: 'group',
         path: "/pages/group",
+        exact: true,
         component: Group
       },
       {
         name: 'detail',
         path: "/pages/detail/:id",
+        exact: false,
         component: Detail
-      }
+      },
+      {
+        name: 'subject',
+        path: '/pages/:classify/subject/:id',
+        exact: false,
+        component: Subject
+      },
     ]
   },
   {
@@ -59,5 +73,10 @@ export const routes = [
     path: '/register',
     component: Register
   },
-  
+  // antd 组件展示页
+  {
+    name: 'demo',
+    path: '/demo',
+    component: Demo
+  },
 ]

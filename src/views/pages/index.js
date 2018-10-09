@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Switch } from 'react-router-dom'
 import { RouteWithSubRoutes } from '@/router/index'
 import Header from '@/components/header'
 
@@ -9,7 +9,9 @@ class Pages extends React.Component {
     return (
       <div>
         <Header />
-        {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+        <Switch>
+          {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+        </Switch>
       </div>
     )
   }

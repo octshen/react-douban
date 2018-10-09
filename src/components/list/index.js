@@ -33,7 +33,7 @@ class List extends Component {
         {
           mold === 'basic' && <ul styleName='basic'>
             {
-              items && items.map((items, index) => (
+              items && items.map((item, index) => (
                 <li key={index}>
                   <a>
                     <h3>{item.title}</h3>

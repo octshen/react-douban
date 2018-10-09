@@ -3,7 +3,7 @@ import './style.less'
 
 class Rating extends Component {
   render() {
-    let { rating } = this.props
+    let { rating, children } = this.props
     let average = rating.average
     let full = parseInt(average / 2, 10)
     let half = average % 2 === 0 ? 0 : 1
@@ -16,12 +16,13 @@ class Rating extends Component {
         {
           full === 0 
             ? <span>暂无评分</span>
-            : <div>
-              {arrFull.map((item, index) => (<span key={index} styleName='star-full'></span>))}
-              {arrhalf.map((item, index) => (<span key={index} styleName='star-half'></span>))}
-              {arrGray.map((item, index) => (<span key={index} styleName='star-gray'></span>))}
-              <span styleName='average'>{average}</span>
-            </div>
+            : <React.Fragment>
+                {arrFull.map((item, index) => (<span key={index} styleName='star-full'></span>))}
+                {arrhalf.map((item, index) => (<span key={index} styleName='star-half'></span>))}
+                {arrGray.map((item, index) => (<span key={index} styleName='star-gray'></span>))}
+                <span styleName='average'>{average}</span>
+                {children}
+              </React.Fragment>
         }
       </div>
     )

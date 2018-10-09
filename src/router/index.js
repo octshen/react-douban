@@ -20,6 +20,7 @@ export const RouteWithSubRoutes = route => {
   return (
     <Route
       path={route.path}
+      exact={route.exact}
       render={props => {
         const Ec = RouteWrapperComponent(route.component)
         return <Ec {...props} routes={route.routes} />

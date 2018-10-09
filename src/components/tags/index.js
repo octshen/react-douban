@@ -5,7 +5,7 @@ const Tags = ({items}) => {
   return (
     <ul styleName='tags'>
       {
-        items && items.map((item, index) => (
+        items && items.length > 0 && items.map((item, index) => (
           <li key={index}>
             <a>{item.name ? item.name : item}</a>
           </li>

@@ -17,5 +17,8 @@ export const B_UPDATENOVEL = 'B_UPDATENOVEL'
 export const B_UPDATEREALITY = 'B_UPDATEREALITY'
 export const B_UPDATETRAVEL = 'B_UPDATETRAVEL'
 
-//group
+// group
 export const UPDATEGROUP = 'UPDATEGROUP'
+
+// subject
+export const UPDATESINGLESUBJECT = 'UPDATESINGLESUBJECT'
