@@ -22,7 +22,7 @@ const updateSearchResult = (data, stype) => {
   }
 }
 
-const getSearchResult = (queryStr) => (dispatch) => {
+const getSearchResult = ({queryStr}) => (dispatch) => {
   const getMovie = () => axios.get(`movie/search?q=${queryStr}&count=3`)
   const getBook = () => axios.get(`book/search?q=${queryStr}&count=3`)
   const getMusic = () => axios.get(`music/search?q=${queryStr}&count=3`)
