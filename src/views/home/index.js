@@ -31,31 +31,30 @@ class Home extends React.Component {
   render() {
     let { events, loadMore } = this.props
     return (
-      <div data-role='home-view' className='has-header'>
-        <PullToRefresh
-          damping={100}
-          ref={this.ptr}
-          style={{
-            height: this.state.height,
-            overflow: 'auto',
-          }}
-          distanceToRefresh={60}
-          indicator={this.state.down ? {} : {release: <Spinner style={{height: '60px'}} />, deactivate: '上拉刷新' }}
-          direction={this.state.down ? 'down' : 'up'}
-          refreshing={this.state.refreshing}
-          onRefresh={() => {
-            this.setState({ refreshing: true })
-            loadMore().then(() => {
-              this.setState({ refreshing: false })
-            })
-          }}
-        >  
-          <SubNav mold='quickNav'/>
-          {
-            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner/>
-          }
-        </PullToRefresh>
-      </div>
+      <PullToRefresh
+        damping={100}
+        ref={this.ptr}
+        style={{
+          height: this.state.height,
+          overflow: 'auto',
+          paddingTop: '4.8rem'
+        }}
+        distanceToRefresh={60}
+        indicator={this.state.down ? {} : {release: <Spinner style={{height: '60px'}} />, deactivate: '上拉刷新' }}
+        direction={this.state.down ? 'down' : 'up'}
+        refreshing={this.state.refreshing}
+        onRefresh={() => {
+          this.setState({ refreshing: true })
+          loadMore().then(() => {
+            this.setState({ refreshing: false })
+          })
+        }}
+      >  
+        <SubNav mold='quickNav'/>
+        {
+          events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner/>
+        }
+      </PullToRefresh>
     )
   }
 }

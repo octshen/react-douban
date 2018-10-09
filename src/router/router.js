@@ -26,7 +26,7 @@ const Search = () => import('../views/search')
 
 const loading = () => {
   return (
-    <div></div>
+    <h3>Loading</h3>
   )
 }
 export const routes = [
