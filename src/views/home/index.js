@@ -40,7 +40,7 @@ class Home extends React.Component {
             overflow: 'auto',
           }}
           distanceToRefresh={60}
-          indicator={this.state.down ? {} : {release: <Spinner />, deactivate: '上拉刷新' }}
+          indicator={this.state.down ? {} : {release: <Spinner style={{height: '60px'}} />, deactivate: '上拉刷新' }}
           direction={this.state.down ? 'down' : 'up'}
           refreshing={this.state.refreshing}
           onRefresh={() => {
@@ -52,7 +52,7 @@ class Home extends React.Component {
         >  
           <SubNav mold='quickNav'/>
           {
-            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner style={{height: '60px'}}/>
+            events.length !== 0 ? <List mold='thumbnail' items={events}/> : <Spinner/>
           }
         </PullToRefresh>
       </div>
