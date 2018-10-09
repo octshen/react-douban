@@ -31,7 +31,7 @@ class Home extends React.Component {
   render() {
     let { events, loadMore } = this.props
     return (
-      <div data-role='home-view'>
+      <div data-role='home-view' className='has-header'>
         <PullToRefresh
           damping={100}
           ref={this.ptr}
