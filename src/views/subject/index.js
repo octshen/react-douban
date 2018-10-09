@@ -88,13 +88,13 @@ class Subject extends Component {
                     {
                       subject.author 
                         ? <React.Fragment>
-                            <Link to='login'>想读</Link>
-                            <Link to='login'>在读</Link>
-                            <Link to='login'>读过</Link>
+                            <Link to='/login'>想读</Link>
+                            <Link to='/login'>在读</Link>
+                            <Link to='/login'>读过</Link>
                           </React.Fragment>
                         : <React.Fragment>
-                            <Link to='login'>想看</Link>
-                            <Link to='login'>看过</Link>
+                            <Link to='/login'>想看</Link>
+                            <Link to='/login'>看过</Link>
                           </React.Fragment>
                     }
                   </Marking>

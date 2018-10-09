@@ -11,6 +11,7 @@
 // import Search from '../views/search'
 import Loadable from 'react-loadable'
 import React, { Component } from 'react'
+import Spinner from '@/components/Spinner'
 
 const Login = () => import('../views/login')
 const Register = () => import('../views/register')
@@ -25,9 +26,7 @@ const Subject = () => import('../views/subject')
 const Search = () => import('../views/search')
 
 const loading = () => {
-  return (
-    <h3>Loading</h3>
-  )
+  return <Spinner />
 }
 export const routes = [
   {
