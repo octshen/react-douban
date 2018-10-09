@@ -4,6 +4,7 @@ import movie from './movie'
 import book from './book'
 import group from './group'
 import subject from './subject'
+import search from './search'
 
 export default {
   userInfo,
@@ -11,5 +12,6 @@ export default {
   movie,
   book,
   group,
-  subject
+  subject,
+  search
 }

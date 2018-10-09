@@ -15,12 +15,12 @@ const GroupC = ({title, items, children}) => {
             <Link to={`/pages/${item.subtype ? item.subtype : 'book'}/subject/${item.id}`}>
               <div styleName='group-meta'>
                 {
-                  item.images.small && <img src={item.images.small} alt='cover' />
+                  item.images && item.images.small && <img src={item.images.small} alt='cover' />
                 }
                 <div styleName='group-info'>
                   <span>{item.title}</span>
                   {
-                    item.rating && <rating rating='item.rating' />
+                    item.rating && <Rating rating={item.rating} />
                   }
                 </div>
                 {

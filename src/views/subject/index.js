@@ -24,7 +24,7 @@ class Subject extends Component {
     isExpand: true
   }
   componentDidMount() {
-    let { match, location } = this.props
+    let { match } = this.props
     let { classify, id } = match.params
     this.props.getSingleSubject({
       classify,
@@ -163,26 +163,14 @@ class Subject extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   loading: state.main.loading,
-//   subject: state.subject,
-//   movieTags: state.movie.movieTags,
-//   subjectMeta: subjectMeta(state.subject),
-//   summary: summary(state.subject),
-//   genres: genres(state.subject)
-// })
-const mapStateToProps = state => {
-  console.log(state, 'state')
-  return {
-    loading: state.main.loading,
-    subject: state.subject,
-    movieTags: state.movie.movieTags,
-    subjectMeta: subjectMeta(state.subject),
-    summary: summary(state.subject),
-    genres: genres(state.subject)
-  }
-}
-  
+const mapStateToProps = state => ({
+  loading: state.main.loading,
+  subject: state.subject,
+  movieTags: state.movie.movieTags,
+  subjectMeta: subjectMeta(state.subject),
+  summary: summary(state.subject),
+  genres: genres(state.subject)
+})
 
 const mapDispatchToProps = {
   getSingleSubject,

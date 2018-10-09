@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import GroupC from '@/components/group'
+import GroupC from '@/components/groupC'
 import UserBar from '@/components/userBar'
 import DownLoadApp from '@/components/downloadApp'
 import Spinner from '@/components/Spinner'

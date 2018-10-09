@@ -10,6 +10,8 @@ import Movie from '../views/movie'
 import Book from '../views/book'
 import Group from '../views/group'
 import Subject from '../views/subject'
+import Search from '../views/search'
+
 import Demo from '../views/AntdDemo'
 
 // 暂时不生效
@@ -61,6 +63,12 @@ export const routes = [
         exact: false,
         component: Subject
       },
+      {
+        name: 'search',
+        path: '/pages/search/:queryStr',
+        exact: false,
+        component: Search
+      },
     ]
   },
   {
@@ -73,6 +81,7 @@ export const routes = [
     path: '/register',
     component: Register
   },
+  
   // antd 组件展示页
   {
     name: 'demo',

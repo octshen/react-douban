@@ -3,6 +3,9 @@ import { withRouter } from 'react-router-dom'
 import './style.less'
 
 class Header extends React.Component {
+  openTalion = () => {
+    this.props.openTalion()
+  }
   render() {
     let { history, location } = this.props
     return (
@@ -32,7 +35,7 @@ class Header extends React.Component {
             </span>
           </li>
         </ul>
-        <span styleName='talion'></span>
+        <span styleName='talion' onClick={this.openTalion}></span>
       </div>
     )
   }

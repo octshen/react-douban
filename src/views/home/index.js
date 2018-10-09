@@ -19,11 +19,11 @@ class Home extends React.Component {
     this.ptr = React.createRef()
   }
   componentDidMount() {
-    const hei = this.state.height - ReactDOM.findDOMNode(this.ptr.current).offsetTop
+    let height = this.state.height - ReactDOM.findDOMNode(this.ptr.current).offsetTop
     let { events, loadMore } = this.props
     events.length === 0 && loadMore().then((data) => {
       this.setState({
-        height: hei,
+        height,
         data
       })
     })
