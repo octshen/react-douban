@@ -1,20 +1,17 @@
-// import Loadable from 'react-loadable'
-// import Loading from './Loading'
-import Login from '../views/login'
-import Register from '../views/register'
-import Home from '../views/home'
-import Pages from '../views/pages'
-import Status from '../views/status'
-import Detail from '../views/detail'
-import Movie from '../views/movie'
-import Book from '../views/book'
-import Group from '../views/group'
-import Subject from '../views/subject'
-import Search from '../views/search'
-
 import Demo from '../views/AntdDemo'
 
-// 暂时不生效
+const Login = () => import('../views/login')
+const Register = () => import('../views/register')
+const Home = () => import('../views/home')
+const Pages = () => import('../views/pages')
+const Status = () => import('../views/status')
+const Detail = () => import('../views/detail')
+const Movie = () => import('../views/movie')
+const Book = () => import('../views/book')
+const Group = () => import('../views/group')
+const Subject = () => import('../views/subject')
+const Search = () => import('../views/search')
+
 export const routes = [
   {
     name: 'pages',
