@@ -2,6 +2,9 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
 import { routes } from './router'
 import { show, hide } from '@/store/mainReducer'
+
+import { hot } from 'react-hot-loader'
+
 function RouteWrapperComponent(RouteComponent) {
   return class Wrapper extends React.Component {
     componentDidMount() {
@@ -42,4 +45,4 @@ const Router = () => (
   </HashRouter>
 )
 
-export default Router
+export default hot(module)(Router)
