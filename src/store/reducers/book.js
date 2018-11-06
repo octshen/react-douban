@@ -41,7 +41,7 @@ const novel = (state = [], action) => {
   switch (action.type) {
     case actionTypes.B_UPDATENOVEL:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:
@@ -52,7 +52,7 @@ const reality = (state = [], action) => {
   switch (action.type) {
     case actionTypes.B_UPDATEREALITY:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:
@@ -63,7 +63,7 @@ const travel = (state = [], action) => {
   switch (action.type) {
     case actionTypes.B_UPDATETRAVEL:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:

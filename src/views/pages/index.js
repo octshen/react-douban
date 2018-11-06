@@ -13,7 +13,7 @@ class Pages extends React.Component {
       talion: ''
     })
   }
-  openTalion =() => {
+  openTalion = () => {
     this.setState({
       talion: 'open'
     })
@@ -24,7 +24,7 @@ class Pages extends React.Component {
       <div>
         <Header openTalion={this.openTalion}/>
         <Switch>
-          {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+          {routes.map((route) => <RouteWithSubRoutes key={route.name} {...route} />)}
         </Switch>
         {
           this.state.talion && <Talion closeTalion={this.closeTalion}/>

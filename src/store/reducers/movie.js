@@ -51,7 +51,7 @@ const hotMovies = (state = [], action) => {
   switch (action.type) {
     case actionTypes.M_UPDATEHOT:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:
@@ -62,7 +62,7 @@ const newMovies = (state = [], action) => {
   switch (action.type) {
     case actionTypes.M_UPDATENEW:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:
@@ -73,7 +73,7 @@ const topMovies = (state = [], action) => {
   switch (action.type) {
     case actionTypes.M_UPDATETOP:
       return [
-        ...state,
+        // ...state,
         ...action.data
       ]
     default:

@@ -29,7 +29,7 @@ class Register extends React.Component {
       token: pass,
       name
     }
-    this.props.handleUserInfo(userInfo).then(() => {
+    this.props.registerApp(userInfo).then(() => {
       this.onSuccess()
     }, (err) => {
       this.onError(err)
@@ -173,11 +173,7 @@ class Register extends React.Component {
     )
   }
 }
-const mapStateToProps = state => {
-  return {
-    email: state.userInfo.currentUser.email
-  }
-}
+
 // const mapDispatchToProps = dispatch => {
 //   return {
 //     updateInfo: userInfo => {
@@ -186,7 +182,7 @@ const mapStateToProps = state => {
 //   }
 // }
 const mapDispatchToProps = {
-  handleUserInfo: registerApp
+  registerApp
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(() => ({}), mapDispatchToProps)(Register)

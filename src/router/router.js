@@ -26,7 +26,7 @@ const Subject = () => import('../views/subject')
 const Search = () => import('../views/search')
 
 const loading = () => {
-  return <Spinner />
+  return <div></div>
 }
 export const routes = [
   {

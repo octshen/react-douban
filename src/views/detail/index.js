@@ -6,12 +6,10 @@ import Banner from '@/components/banner'
 import Tags from '@/components/tags'
 import DownloadApp from '@/components/downloadApp'
 import Spinner from '@/components/Spinner'
+import { loadingChange } from '@/store/mainReducer'
 import { getSingleEvent } from '@/store/actions/activities'
 
 class Detail extends React.Component {
-  state ={
-    showLoading: true
-  }
   toArray = (val) => {
     return val.split(',')
   }
@@ -29,19 +27,16 @@ class Detail extends React.Component {
     let { match, getSingleEvent } = this.props
     let id = match.params.id
     getSingleEvent(id).then(() => {
-      this.setState((prevState) => ({
-        showLoading: !prevState.showLoading
-      }))
+      this.props.loadingChange(false)
     })
   }
   render() {
-    let { routes, eventItem } = this.props
-    let { showLoading } = this.state
+    let { routes, eventItem, loading } = this.props
     return (
       <div className='has-header' data-role='detail-view'>
         <Banner title='每天看点好内容' />
         {
-          showLoading
+          loading 
             ? <Spinner />
             : (<div styleName='info'>
                 <h2>
@@ -90,7 +85,7 @@ class Detail extends React.Component {
                 <div styleName='describe'>
                   <h2>活动详情</h2>
                   {
-                    eventItem.content && <div styleName='content' dangerouslySetInnerHTML={this.createContent(eventItem.content)}></div>
+                    eventItem.content && <div styleName='content' dangerouslySetInnerHTML={this.createContent()}></div>
                   }
                 </div>
                 <DownloadApp />
@@ -102,12 +97,11 @@ class Detail extends React.Component {
 }
 const mapStateToProps = state => ({
   eventItem: state.activities.eventItem,
-
+  loading: state.main.loading
 })
-const mapDispatchToProps = dispatch => {
-  return {
-    getSingleEvent: (id) => dispatch(getSingleEvent(id))
-  }
-}
+const mapDispatchToProps = ({
+  getSingleEvent,
+  loadingChange
+})
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Detail))

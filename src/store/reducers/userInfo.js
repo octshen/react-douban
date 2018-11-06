@@ -1,14 +1,12 @@
 import * as actionTypes from '../constants'
 import { combineReducers } from 'redux'
-const lsCurrentUser = localStorage.getItem('userInfo')
+const lsCurrentUser = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'))
+const lsUsers = localStorage.getItem('users') && JSON.parse(localStorage.getItem('users'))
 
-const initUserState = lsCurrentUser || {
-  email: '',
-  token: '',
-  name: ''
-}
+const initUser = lsCurrentUser || null
+const initUsers = lsUsers || []
 
-const users = (state = [], action) => {
+const users = (state = initUsers, action) => {
   switch (action.type) {
     case actionTypes.ADDUSER:
       return [...state, action.data]
@@ -17,11 +15,11 @@ const users = (state = [], action) => {
   }
 }
 
-const currentUser = (state = initUserState, action) => {
+const currentUser = (state = initUser, action) => {
   switch (action.type) {
     case actionTypes.USERINFO_UPDATE:
       return {
-        ...state,
+        // ...state,
         ...action.data
       }
     default:

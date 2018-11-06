@@ -24,7 +24,7 @@ class Login extends React.Component {
       email,
       token
     }
-    this.props.handleUserInfo(userInfo).then(() => {
+    this.props.userLogin(userInfo).then(() => {
       this.onSuccess()
     }, (err) => {
       this.onError(err)
@@ -124,11 +124,11 @@ class Login extends React.Component {
     )
   }
 }
-const mapStateToProps = state => {
-  return {
-    email: state.userInfo.currentUser.email
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     email: state.userInfo.currentUser.email
+//   }
+// }
 // const mapDispatchToProps = dispatch => {
 //   return {
 //     updateInfo: userInfo => {
@@ -137,7 +137,7 @@ const mapStateToProps = state => {
 //   }
 // }
 const mapDispatchToProps = {
-  handleUserInfo: userLogin
+  userLogin
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(() => ({}), mapDispatchToProps)(Login)
